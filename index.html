@@ -165,4 +165,14 @@ const oldJump=window.jumpTo;window.jumpTo=function(id){const map={'catalog':'her
 const oldHome=window.home;window.home=function(){navigate('herramientas');if(typeof oldHome==='function')oldHome()};window.goHome=function(){navigate('inicio')};
 const originalGoQuestion=window.goQuestion;if(typeof originalGoQuestion==='function')window.goQuestion=function(){navigate('dudas');setTimeout(originalGoQuestion,80)};
 navigate('inicio');
-})();</script></body></html>
+})();</script><style id="cgt-final-contrast-override">
+/* Última regla de cascada: títulos en superficies claras */
+html body #derechos-guia h2#derechos-guia-titulo,
+html body #catalog h2,
+html body #catalog h1,
+html body #dudas-cgt h2,
+html body #dudas-cgt h1,
+html body #quienes-somos h2,
+html body #portal-tiles h2{color:#1b1c20!important;-webkit-text-fill-color:#1b1c20!important;text-shadow:none!important;opacity:1!important}
+html body #catalog>p,html body #derechos-guia>p,html body #dudas-cgt>p{color:#292b30!important;-webkit-text-fill-color:#292b30!important}
+</style></body></html>
