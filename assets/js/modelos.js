@@ -1,170 +1,138 @@
 import { printLetter } from "./escritos.js";
 import { navigate } from "./navegacion.js";
 
-function formatDate(value) {
-  return new Intl.DateTimeFormat("es-ES", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(value + "T12:00:00"));
+let models = new Map();
+
+function element(tag, text, className) {
+  const node = document.createElement(tag);
+  if (text) node.textContent = text;
+  if (className) node.className = className;
+  return node;
 }
 
-function today() {
-  const date = new Date();
-  return [
-    date.getFullYear(),
-    String(date.getMonth() + 1).padStart(2, "0"),
-    String(date.getDate()).padStart(2, "0"),
-  ].join("-");
+function createModelCard(model) {
+  const card = element("section", "", "model-card");
+  card.dataset.modelId = model.id;
+  card.setAttribute("aria-label", "Modelo: " + model.titulo);
+  if (model.documentacion?.length) {
+    card.append(element("h4", "Qué documentación preparar"));
+    const list = element("ul");
+    for (const text of model.documentacion) list.append(element("li", text));
+    card.append(list);
+  }
+  card.append(element("h4", "Modelo de escrito para copiar"));
+  card.append(element("p", model.titulo, "model-title"));
+  card.append(
+    element(
+      "p",
+      "Completa los campos entre corchetes en tu documento o a mano después de imprimir. No introduzcas tus datos aquí.",
+      "model-help",
+    ),
+  );
+  const text = element("pre", model.texto, "model-text");
+  text.tabIndex = 0;
+  card.append(text);
+  const actions = element("div", "", "model-actions");
+  for (const [action, label] of [
+    ["copy", "Copiar modelo"],
+    ["download", "Descargar .txt"],
+    ["print", "Imprimir / guardar PDF"],
+  ]) {
+    const button = element("button", label);
+    button.type = "button";
+    button.dataset.modelAction = action;
+    actions.append(button);
+  }
+  const status = element("p", "", "model-status");
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", "polite");
+  card.append(actions, status, element("p", model.aviso, "model-help"));
+  if (model.aclaracion)
+    card.append(element("p", model.aclaracion, "model-help"));
+  if (model.guia) {
+    const link = element("a", model.guia.texto);
+    link.href = model.guia.destino;
+    card.append(link);
+  }
+  return card;
+}
+
+// Reutilizado por la biblioteca, las fichas, las respuestas y el chat.
+export function appendModels(container, ids) {
+  for (const id of ids) {
+    const model = models.get(id);
+    if (model) container.append(createModelCard(model));
+  }
 }
 
 export function initModelos(data) {
+  models = new Map(data.modelos.map((model) => [model.id, model]));
   const select = document.getElementById("model-select");
-  const form = document.getElementById("model-form");
-  const fields = document.getElementById("model-fields");
-  const output = document.getElementById("model-output");
-  const status = document.getElementById("model-status");
-  const models = data.modelos;
-  let model;
+  const library = document.getElementById("model-library-content");
+  function showLibraryModel() {
+    library.replaceChildren();
+    appendModels(library, [select.value]);
+  }
+  for (const model of models.values())
+    select.add(new Option(model.titulo, model.id));
+  select.addEventListener("change", showLibraryModel);
+  showLibraryModel();
+  for (const slot of document.querySelectorAll("[data-model-slot]")) {
+    slot.replaceChildren();
+    appendModels(slot, [slot.dataset.modelSlot]);
+  }
 
-  function renderText(blank) {
-    const values = {};
-    for (const field of model.campos) {
-      const input = form.elements.namedItem(field.nombre);
-      values[field.nombre] = blank ? field.marcador : input.value.trim();
-      if (!blank && field.tipo === "date" && values[field.nombre]) {
-        values[field.nombre] = formatDate(values[field.nombre]);
+  document.addEventListener("click", async (event) => {
+    const opener = event.target.closest("[data-open-model]");
+    if (opener && models.has(opener.dataset.openModel)) {
+      navigate("centro");
+      document.querySelector('[data-center="modelos"]').click();
+      select.value = opener.dataset.openModel;
+      showLibraryModel();
+      library.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    const button = event.target.closest("[data-model-action]");
+    if (!button) return;
+    const card = button.closest("[data-model-id]");
+    const model = models.get(card.dataset.modelId);
+    if (!model) return;
+    const text = card.querySelector(".model-text");
+    const status = card.querySelector(".model-status");
+    switch (button.dataset.modelAction) {
+      case "copy":
+        try {
+          await navigator.clipboard.writeText(text.textContent);
+          status.textContent =
+            "Modelo copiado. Completa los huecos en tu documento.";
+        } catch {
+          text.focus();
+          const range = document.createRange();
+          range.selectNodeContents(text);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          status.textContent =
+            "El texto está seleccionado para copiarlo manualmente.";
+        }
+        break;
+      case "download": {
+        const url = URL.createObjectURL(
+          new Blob(["\uFEFF", text.textContent], {
+            type: "text/plain;charset=utf-8",
+          }),
+        );
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = model.id + ".txt";
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        status.textContent =
+          "Modelo descargado. Completa los huecos antes de entregarlo.";
+        break;
       }
+      case "print":
+        printLetter(text.textContent, model.titulo);
+        break;
     }
-    values.identificacion = values.dni ? ", con DNI " + values.dni : "";
-    // Una sola pasada evita reinterpretar los datos personales como plantillas.
-    output.value = model.texto.replace(
-      /\{\{(\w+)\}\}/g,
-      (_, name) => values[name] ?? "",
-    );
-    status.textContent = blank
-      ? "Modelo en blanco: sustituye los campos entre corchetes."
-      : "Copia preparada. Puedes revisar y editar el texto antes de entregarlo.";
-  }
-
-  function resetFields() {
-    for (const field of model.campos) {
-      form.elements.namedItem(field.nombre).value =
-        field.tipo === "date" ? today() : field.valorInicial || "";
-    }
-  }
-
-  function selectModel() {
-    model = models.find((item) => item.id === select.value);
-    document.getElementById("model-description").textContent =
-      model.descripcion;
-    document.getElementById("model-notice").textContent = model.aviso;
-    document.getElementById("model-clarification").textContent =
-      model.aclaracion;
-    const guide = document.getElementById("model-guide");
-    guide.hidden = !model.guia;
-    if (model.guia) {
-      guide.href = model.guia.destino;
-      guide.textContent = model.guia.texto;
-    }
-    fields.replaceChildren();
-    for (const field of model.campos) {
-      const wrapper = document.createElement("div");
-      wrapper.className = "model-field";
-      const label = document.createElement("label");
-      label.htmlFor = "model-" + field.nombre;
-      label.textContent = field.etiqueta;
-      const input = document.createElement("input");
-      input.id = label.htmlFor;
-      input.name = field.nombre;
-      input.type = field.tipo;
-      input.required = Boolean(field.obligatorio);
-      input.placeholder = field.marcador;
-      input.autocomplete = "off";
-      wrapper.append(label, input);
-      if (field.ayuda) {
-        const help = document.createElement("small");
-        help.id = input.id + "-help";
-        help.className = "model-help";
-        help.textContent = field.ayuda;
-        input.setAttribute("aria-describedby", help.id);
-        wrapper.append(help);
-      }
-      fields.append(wrapper);
-    }
-    resetFields();
-    renderText(true);
-  }
-
-  for (const item of models) {
-    select.add(new Option(item.titulo, item.id));
-  }
-  select.addEventListener("change", selectModel);
-  selectModel();
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    for (const field of model.campos) {
-      const input = form.elements.namedItem(field.nombre);
-      input.value = input.value.trim();
-    }
-    if (form.reportValidity()) renderText(false);
-  });
-  document
-    .getElementById("model-blank")
-    .addEventListener("click", () => renderText(true));
-  document.getElementById("model-clear").addEventListener("click", () => {
-    resetFields();
-    renderText(true);
-    status.textContent =
-      "Datos personales y cambios en el escrito eliminados de esta copia.";
-  });
-  document.getElementById("model-copy").addEventListener("click", async () => {
-    if (!output.value.trim()) {
-      status.textContent = "Prepara primero el escrito.";
-      return;
-    }
-    try {
-      await navigator.clipboard.writeText(output.value);
-      status.textContent = "Escrito copiado.";
-    } catch {
-      output.focus();
-      output.select();
-      status.textContent =
-        "No se ha podido copiar automáticamente. El texto está seleccionado para copiarlo manualmente.";
-    }
-  });
-  document
-    .getElementById("model-print")
-    .addEventListener("click", () => printLetter(output.value, model.titulo));
-  document.getElementById("model-download").addEventListener("click", () => {
-    if (!output.value.trim()) {
-      status.textContent = "Prepara primero el escrito.";
-      return;
-    }
-    const url = URL.createObjectURL(
-      new Blob(["\uFEFF", output.value], { type: "text/plain;charset=utf-8" }),
-    );
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = model.id + ".txt";
-    link.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    status.textContent = "Copia descargada en tu dispositivo.";
-  });
-  document.addEventListener("click", (event) => {
-    const link = event.target.closest("[data-open-model]");
-    if (!link) return;
-    const id = link.dataset.openModel;
-    if (!models.some((item) => item.id === id)) return;
-    navigate("centro");
-    document.querySelector('[data-center="modelos"]').click();
-    if (select.value !== id) {
-      select.value = id;
-      selectModel();
-    }
-    document
-      .getElementById("modelos-escritos")
-      .scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }

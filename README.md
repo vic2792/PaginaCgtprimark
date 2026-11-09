@@ -26,7 +26,7 @@ assets/
     tablas.js              Consulta de salarios, antigüedad, tarifas y permisos
     nomina.js              Comparación de la nómina con la referencia salarial
     escritos.js            Generadores de escritos, copia e impresión
-    modelos.js             Biblioteca de textos preparados y copias editables
+    modelos.js             Modelos con huecos en las respuestas y el chat
     consultas.js           Búsqueda de los temas laborales y sus respuestas
     chat.js                Ventana de chat que reutiliza las mismas respuestas
     centro-laboral.js      Pestañas, jornada semanal, gestiones y cuestionario
@@ -97,6 +97,10 @@ La separación conserva los importes y contenidos anteriores; no supone una nuev
 
 ## Añadir un modelo de escrito
 
-Los modelos preparados están en `data/escritos.json`. Cada entrada tiene un identificador único, título, descripción, indicaciones de uso, lista de campos y texto. Los marcadores `{{nombre}}`, `{{centro}}`, `{{ciudad}}` y `{{fecha}}` se sustituyen en la copia; `{{identificacion}}` añade el DNI solo si se rellena. Los campos de DNI, cuando se utilicen, deben declararse opcionales. No se guardan las copias en localStorage ni se envían a un servidor.
+Los modelos preparados están en `data/escritos.json`. Cada entrada tiene un identificador único, título, texto con huecos como `[Nombre y apellidos]` o `[fecha]`, documentación orientativa y notas de uso. No hay campos personales ni sustitución automática de nombre, DNI o fechas. La persona completa la copia fuera de la web o a mano tras imprimir.
 
-El primer modelo es la renuncia breve facilitada por el usuario. Se ha omitido «obligatorias» para distinguir las horas del pacto de las horas de aceptación voluntaria; el generador detallado y las referencias jurídicas siguen disponibles. Antes de añadir otro modelo hay que revisar su redacción y los requisitos del trámite, sin presentar un texto genérico como garantía jurídica.
+Para asociar un texto a una respuesta de `data/preguntas.json`, se añade `"modelos": ["identificador-del-modelo"]` al tema. Opcionalmente, `"documentacion": ["...", "..."]` añade una lista de documentos a preparar. Las fichas HTML extensas pueden incluir `<div data-model-slot="identificador-del-modelo"></div>`. El buscador y el chat reutilizan los mismos bloques y sus botones para copiar, descargar e imprimir.
+
+El primer modelo es la renuncia breve facilitada por el usuario, integrada en su ficha, su respuesta y el chat. Se ha omitido «obligatorias» para distinguir las horas del pacto de las horas de aceptación voluntaria. Se conserva el generador detallado anterior como herramienta independiente; el formulario de personalización de la nueva biblioteca se ha retirado.
+
+No se ha añadido una IA generativa: se muestran los textos preparados que existen en el repositorio. Los modelos de hospitalización, fallecimiento o matrimonio se incorporarán cuando se aporten y revisen sus textos, sin inventar respuestas ni asociar una plantilla incorrecta.

@@ -1205,16 +1205,7 @@
               complementarias que dejes de realizar tampoco se cobrarán como
               horas trabajadas.
             </p>
-            <p>
-              <a href="#centro-laboral" data-letter="renuncia-complementarias"
-                >Preparar un borrador de renuncia para RR. HH.</a
-              >
-              <br /><a
-                href="#centro-laboral"
-                data-open-model="renuncia-complementarias-breve"
-                >Ver el modelo breve de renuncia</a
-              >
-            </p>
+            <div data-model-slot="renuncia-complementarias-breve"></div>
             <p class="small">
               <strong>Fuentes:</strong>
               <a
@@ -1538,63 +1529,19 @@
         </div>
         <div class="cgt-pane" data-pane="modelos" id="modelos-escritos">
           <span class="cgt-kicker">BIBLIOTECA DE ESCRITOS</span>
-          <h3>Modelos listos para utilizar</h3>
+          <h3>Modelos para cada consulta</h3>
           <p>
-            Consulta el texto completo de cada modelo, prepara una copia con tus
-            datos y revísala antes de entregarla.
+            Los modelos disponibles también aparecen dentro de su respuesta
+            laboral. Copia o imprime el texto y completa los huecos por tu
+            cuenta.
           </p>
           <p class="model-privacy">
-            Tus datos se usan solo para preparar esta copia; no se envían ni se
-            guardan para futuras visitas.
+            No necesitas introducir nombre, DNI ni otros datos personales para
+            obtener un modelo.
           </p>
-          <label for="model-select">Elige un modelo</label>
+          <label for="model-select">Elige un modelo disponible</label>
           <select id="model-select"></select>
-          <p id="model-description"></p>
-          <div class="cgt-result" id="model-notice"></div>
-          <p id="model-clarification" class="model-help"></p>
-          <details class="model-personalize">
-            <summary>Preparar una copia con mis datos</summary>
-            <form id="model-form" autocomplete="off">
-              <div id="model-fields" class="model-fields"></div>
-              <button type="submit" class="cgt-primary">
-                Preparar mi copia
-              </button>
-            </form>
-          </details>
-          <div class="model-preview-heading">
-            <label for="model-output">Tu modelo (puedes editar el texto)</label
-            ><button type="button" id="model-blank">
-              Ver modelo en blanco
-            </button>
-          </div>
-          <textarea
-            id="model-output"
-            rows="17"
-            aria-describedby="model-output-help"
-            spellcheck="true"
-          ></textarea>
-          <p id="model-output-help" class="model-help">
-            Si quedan campos entre corchetes, complétalos antes de presentar el
-            escrito. Los cambios que hagas aquí se incluirán al copiar,
-            descargar o imprimir.
-          </p>
-          <div class="cgt-actions">
-            <button type="button" id="model-copy">Copiar</button>
-            <button type="button" id="model-download">Descargar .txt</button>
-            <button type="button" id="model-print">
-              Imprimir / guardar PDF
-            </button>
-            <button type="button" id="model-clear">Limpiar mis datos</button>
-          </div>
-          <p
-            id="model-status"
-            class="model-help"
-            role="status"
-            aria-live="polite"
-          ></p>
-          <a id="model-guide" href="#faq-renuncia-complementarias"
-            >Consultar los requisitos de renuncia al pacto</a
-          >
+          <div id="model-library-content"></div>
         </div>
         <div class="cgt-pane" data-pane="sanciones">
           <h3>¿Te han comunicado una sanción?</h3>
