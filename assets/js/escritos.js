@@ -1,4 +1,4 @@
-import { $, val, out, copyText } from "./ui.js";
+import { $, val, out, copyText, clean } from "./ui.js";
 let lastText = "";
 function showText(t) {
   lastText = t;
@@ -40,18 +40,6 @@ export function initEscritos() {
     renunciaOptions.hidden =
       q("#cgt-letter-type").value !== "renuncia-complementarias";
   });
-  const escapeHtml = (s) =>
-    String(s).replace(
-      /[&<>"']/g,
-      (c) =>
-        ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;",
-        })[c],
-    );
   q("#cgt-letter-make").addEventListener("click", () => {
     const type = q("#cgt-letter-type").value,
       name = q("#cgt-letter-name").value.trim() || "[Nombre y apellidos]",
@@ -161,28 +149,33 @@ export function initEscritos() {
     }
   });
   q("#cgt-letter-print").addEventListener("click", () => {
-    const t = q("#cgt-letter-output").value;
-    if (!t) return alert("Genera primero el escrito.");
-    const w = window.open("", "_blank");
-    if (!w) return alert("Permite las ventanas emergentes para imprimir.");
-    const stylesheet = new URL("../css/impresion.css", import.meta.url).href;
-    w.addEventListener(
-      "load",
-      () => {
-        w.focus();
-        w.print();
-      },
-      { once: true },
-    );
-    w.document.write(
-      '<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Escrito laboral</title>' +
-        '<link rel="stylesheet" href="' +
-        stylesheet +
-        '"></head><body><pre>' +
-        escapeHtml(t) +
-        "</pre></body></html>",
-    );
-    w.document.close();
+    printLetter(q("#cgt-letter-output").value);
   });
+}
+
+// Compartido por el generador y la biblioteca de modelos.
+export function printLetter(text, title = "Escrito laboral") {
+  if (!text.trim()) return alert("Prepara primero el escrito.");
+  const w = window.open("", "_blank");
+  if (!w) return alert("Permite las ventanas emergentes para imprimir.");
+  const stylesheet = new URL("../css/impresion.css", import.meta.url).href;
+  w.addEventListener(
+    "load",
+    () => {
+      w.focus();
+      w.print();
+    },
+    { once: true },
+  );
+  w.document.write(
+    '<!doctype html><html lang="es"><head><meta charset="utf-8"><title>' +
+      clean(title) +
+      '</title><link rel="stylesheet" href="' +
+      stylesheet +
+      '"></head><body><pre>' +
+      clean(text) +
+      "</pre></body></html>",
+  );
+  w.document.close();
 }
 export { makeLetter, makeIncident };

@@ -20,7 +20,7 @@ El logotipo se decodifica a un JPEG con los mismos bytes de imagen que tenía el
 
 ## Carga y publicación
 
-La entrada es `assets/js/main.js`. Carga los tres JSON, inicia los módulos en un orden explícito y marca la página como preparada. Si falla la carga de datos, muestra un mensaje para recargar, sin inventar resultados. Las rutas de datos y de impresión se resuelven con `import.meta.url`, compatibles con la subcarpeta de GitHub Pages.
+La entrada es `assets/js/main.js`. Carga los archivos JSON, inicia los módulos en un orden explícito y marca la página como preparada. Si falla la carga de datos, muestra un mensaje para recargar, sin inventar resultados. Las rutas de datos y de impresión se resuelven con `import.meta.url`, compatibles con la subcarpeta de GitHub Pages.
 
 El proyecto sigue siendo estático y no necesita pasos de compilación. `package.json` y `package-lock.json` fijan únicamente la dependencia de desarrollo necesaria para repetir las pruebas. No son dependencias que se envíen al navegador.
 
