@@ -36,6 +36,19 @@ const path=require('node:path');
  for(const [query,expected] of [['Quiero dejar de hacer horas complementarias','Renuncia'],['Cómo quitar las horas complementarias','Renuncia'],['Renunciar al pacto de horas','Renuncia'],['No quiero hacer más horas complementarias','Renuncia'],['Me han despedido y tengo un hijo','Sanciones'],['salario y vacaciones','Necesitamos concretar'],['astronomía','Necesitamos concretar']]){
  await page.locator('#pregunta-staff').fill(query);await page.locator('#form-dudas').evaluate(e=>e.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true})));assert.match(await page.locator('#respuesta-staff h3').innerText(),new RegExp(expected),query);
  }
+ await page.locator('[data-question="Cómo rechazar las horas complementarias y renunciar al pacto"]').click();
+ const answer=await page.locator('#respuesta-staff').innerText();
+ assert.match(answer,/12\.5\.e/);assert.match(answer,/15 días/);assert.match(answer,/cláusula sexta/);assert.match(answer,/aceptación voluntaria/);assert.doesNotMatch(answer,/pendiente de revisión del convenio/);
+ await page.locator('#respuesta-staff [data-letter]').click();
+ assert.equal(await page.locator('#cgt-letter-type').inputValue(),'renuncia-complementarias');
+ assert.equal(await page.locator('#cgt-renuncia-options').isVisible(),true);
+ await page.locator('#cgt-letter-make').click();
+ assert.match(await page.locator('#cgt-letter-output').inputValue(),/12\.5\.e/);
+ await page.locator('#cgt-renuncia-causa').selectOption('otros');await page.locator('#cgt-letter-make').click();
+ assert.match(await page.locator('#cgt-letter-output').inputValue(),/15 días/);
+ await page.locator('#cgt-chat-launch').click();await page.locator('#cgt-chat-input').fill('¿Puedo rechazar las horas complementarias?');
+ await page.locator('#cgt-chat-form').evaluate(e=>e.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true})));
+ assert.match(await page.locator('#cgt-chat-messages').innerText(),/12\.5\.e/);
  assert.deepEqual(errors,[]);await page.close();console.log(`PASS ${width}px: 16 tools, navigation, calculations, letters, weekly hours, queries`);
  }
  }finally{if(browser)await browser.close();await new Promise(r=>server.close(r))}
