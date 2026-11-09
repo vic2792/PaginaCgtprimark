@@ -143,7 +143,18 @@ const {
       assert.match(answer, /cláusula sexta/);
       assert.match(answer, /aceptación voluntaria/);
       assert.doesNotMatch(answer, /pendiente de revisión del convenio/);
-      await page.locator("#respuesta-staff [data-letter]").click();
+      assert.match(
+        await page.locator("#respuesta-staff .model-text").innerText(),
+        /People & Culture/,
+      );
+      await page
+        .locator('[data-portal="centro"]')
+        .first()
+        .evaluate((e) => e.click());
+      await page.locator('[data-center="escritos"]').click();
+      await page
+        .locator("#cgt-letter-type")
+        .selectOption("renuncia-complementarias");
       assert.equal(
         await page.locator("#cgt-letter-type").inputValue(),
         "renuncia-complementarias",

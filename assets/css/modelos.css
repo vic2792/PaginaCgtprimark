@@ -1,63 +1,89 @@
+.model-card {
+  margin: 22px 0;
+  padding: 18px;
+  border: 1px solid #bfc4cc;
+  border-radius: 14px;
+  min-width: 0;
+}
+.model-card h4 {
+  margin: 12px 0;
+  font-size: 17px;
+}
+.model-title {
+  font-weight: 750;
+}
+.model-help,
+.model-status {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.model-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.75;
+  margin: 18px 0;
+  padding: 18px;
+  border: 1px solid #c5cbd4;
+  border-radius: 12px;
+  background: #f7f8fa;
+  color: #20232a;
+}
+.model-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.model-actions button {
+  font: inherit;
+  padding: 11px 14px;
+  border: 1px solid #bfc4cc;
+  border-radius: 10px;
+  background: #fff;
+  color: #20232a !important;
+  -webkit-text-fill-color: #20232a !important;
+  font-weight: 650;
+  cursor: pointer;
+}
+.model-actions button:focus-visible,
+.model-text:focus-visible {
+  outline: 3px solid #c7293b;
+  outline-offset: 3px;
+}
 #centro-laboral .model-privacy {
   padding: 12px 15px;
   border-radius: 12px;
   background: #f4f5f7;
   font-size: 13px;
 }
-#centro-laboral .model-personalize {
-  margin: 22px 0;
-  padding: 16px;
-  border: 1px solid #dce0e5;
-  border-radius: 14px;
-}
-#centro-laboral .model-personalize summary {
-  font-weight: 750;
-  cursor: pointer;
-  color: #20232a;
-}
-#centro-laboral .model-fields {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 18px;
-  margin-bottom: 18px;
-}
-#centro-laboral .model-field {
-  min-width: 0;
-}
-#centro-laboral .model-help {
-  display: block;
-  font-size: 13px;
-  line-height: 1.5;
-  color: #565b67;
-  margin-top: 8px;
-}
-#centro-laboral .model-preview-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 18px;
-}
-#centro-laboral #model-output {
-  min-height: 410px;
-  line-height: 1.7;
-  background: #fafbfc !important;
-  color: #20232a !important;
-  border-color: #aab0b9 !important;
-}
 #centro-laboral #modelos-escritos {
   scroll-margin-top: 90px;
 }
+#dudas-cgt .model-text,
+#cgt-chat-panel .model-text {
+  background: #17191f !important;
+  color: #f5f6f8 !important;
+  -webkit-text-fill-color: #f5f6f8 !important;
+  border-color: #626773;
+}
+#cgt-chat-panel .model-card {
+  padding: 12px;
+}
+#cgt-chat-panel .model-text {
+  padding: 12px;
+}
 @media (max-width: 600px) {
-  #centro-laboral .model-fields {
-    grid-template-columns: 1fr;
+  .model-card {
+    padding: 14px;
   }
-  #centro-laboral .model-preview-heading {
-    align-items: stretch;
+  .model-text {
+    padding: 14px;
+  }
+  .model-actions {
     flex-direction: column;
   }
-  #centro-laboral #model-output {
-    min-height: 460px;
+  .model-actions button {
+    width: 100%;
   }
 }

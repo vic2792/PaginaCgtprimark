@@ -1,3 +1,5 @@
+import { appendModels } from "./modelos.js";
+
 export function initConsultas(datos) {
   const topics = datos.temas;
   const input = document.getElementById("pregunta-staff"),
@@ -53,6 +55,18 @@ export function initConsultas(datos) {
     law.textContent = "Referencia: " + item.law + ". ";
     law.append(a);
     result.append(h, p, next, law);
+    if (item.documentacion?.length) {
+      const heading = document.createElement("h4");
+      heading.textContent = "Qué documentación preparar";
+      const list = document.createElement("ul");
+      for (const text of item.documentacion) {
+        const li = document.createElement("li");
+        li.textContent = text;
+        list.append(li);
+      }
+      result.append(heading, list);
+    }
+    appendModels(result, item.modelos || []);
     if (item.internal) {
       const link = document.createElement("a");
       link.href = item.internal;

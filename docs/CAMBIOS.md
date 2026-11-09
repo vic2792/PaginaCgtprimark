@@ -55,3 +55,13 @@ Permite ver el modelo en blanco, rellenar una copia, editar el resultado, copiar
 Se incorporan accesos desde el generador y desde la ficha de renuncia. Se conserva el generador detallado y se recuerda que el modelo breve exige comprobar los requisitos y el preaviso aplicables. No se han creado modelos no facilitados ni nuevas respuestas jurídicas.
 
 Pruebas: modelo en blanco y personalizado, DNI opcional, edición, copia y alternativa cuando falla el permiso, descarga, impresión con texto escapado, limpieza y ausencia de datos personales en solicitudes y almacenamiento, a 320/390/1280 px. Regresión de las 16 herramientas y la impresión existente.
+
+## Modelos dentro de las respuestas, con huecos manuales
+
+Se corrige la interpretación anterior: el modelo de renuncia aparece completo dentro de su ficha y respuesta, junto con qué documentación preparar. El chat reutiliza el mismo bloque. Los botones de copia, descarga e impresión funcionan también en las respuestas clonadas.
+
+Se retira el formulario de personalización de la biblioteca, la edición de la copia en la página y la inserción automática de datos o fechas. El texto se guarda directamente con huecos entre corchetes en data/escritos.json (esquema 2). Se mantiene el acceso secundario por Centro laboral → Modelos y las herramientas anteriores.
+
+Los temas de preguntas.json admiten asociaciones mediante modelos y documentación; las fichas HTML pueden incluir un data-model-slot. Se prueba esta asociación futura con datos ficticios solo en las pruebas, sin publicar modelos no aportados. No se instala un servicio de IA generativa ni se inventan modelos de hospitalización, fallecimiento o matrimonio.
+
+Pruebas: modelo dentro de la respuesta correcta, documentación, huecos sin datos automáticos, copia/alternativa manual, descarga e impresión, botones en chat, ausencia de formulario personal, no mostrar renuncia en otros temas, biblioteca y asociación futura por tema, en 320/390/1280 px. Regresión del resto de herramientas.

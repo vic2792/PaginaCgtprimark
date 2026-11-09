@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "modelos": [
     {
       "id": "renuncia-complementarias-breve",
@@ -8,50 +8,16 @@
       "descripcion": "Modelo breve de comunicación a People & Culture, basado en el texto facilitado.",
       "aviso": "Comprueba con CGT los requisitos de renuncia, el preaviso y la fecha de efectos antes de entregar el escrito. Añade la justificación que corresponda.",
       "aclaracion": "El modelo se refiere al pacto firmado. Las horas complementarias de aceptación voluntaria tienen un régimen distinto.",
-      "campos": [
-        {
-          "nombre": "nombre",
-          "etiqueta": "Nombre y apellidos",
-          "tipo": "text",
-          "marcador": "[Nombre y apellidos]",
-          "obligatorio": true
-        },
-        {
-          "nombre": "dni",
-          "etiqueta": "DNI (opcional)",
-          "tipo": "text",
-          "marcador": "[DNI, si lo incluyes]",
-          "ayuda": "Puedes dejarlo vacío: no aparecerá en tu copia."
-        },
-        {
-          "nombre": "centro",
-          "etiqueta": "Centro Primark",
-          "tipo": "text",
-          "marcador": "[Centro de trabajo]",
-          "valorInicial": "Gran Vía",
-          "obligatorio": true
-        },
-        {
-          "nombre": "ciudad",
-          "etiqueta": "Lugar de firma",
-          "tipo": "text",
-          "marcador": "Madrid",
-          "valorInicial": "Madrid",
-          "obligatorio": true
-        },
-        {
-          "nombre": "fecha",
-          "etiqueta": "Fecha de firma",
-          "tipo": "date",
-          "marcador": "[fecha]",
-          "obligatorio": true
-        }
-      ],
-      "texto": "Renuncia al pacto de horas complementarias\n\nA/A: People & Culture\nPrimark – {{centro}}\n\nYo, {{nombre}}{{identificacion}}, mayor de edad y empleado/a del centro de trabajo Primark {{centro}}, mediante la presente comunico formalmente mi renuncia al pacto de horas complementarias anexo a mi contrato de trabajo.\n\nSin otro particular, y para que conste a los efectos legales oportunos, firmo la presente en {{ciudad}}, a {{fecha}}.\n\nFirma: {{nombre}}",
+      "texto": "Renuncia al pacto de horas complementarias\n\nA/A: People & Culture\nPrimark – [Centro de trabajo]\n\nYo, [Nombre y apellidos], con DNI [DNI, si procede], mayor de edad y empleado/a del centro de trabajo Primark [Centro de trabajo], mediante la presente comunico formalmente mi renuncia al pacto de horas complementarias anexo a mi contrato de trabajo.\n\nSin otro particular, y para que conste a los efectos legales oportunos, firmo la presente en [Ciudad], a [fecha].\n\nFirma: [Nombre y apellidos]",
       "guia": {
         "texto": "Consultar los requisitos de renuncia al pacto",
         "destino": "#faq-renuncia-complementarias"
-      }
+      },
+      "documentacion": [
+        "Ten a mano el pacto de horas complementarias y el contrato para comprobar su fecha y sus condiciones.",
+        "Prepara la comunicación de renuncia y conserva una copia con constancia de entrega.",
+        "Adjunta la justificación de la causa cuando sea exigible en la vía de renuncia que utilices."
+      ]
     }
   ]
 }
