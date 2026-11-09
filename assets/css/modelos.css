@@ -1,0 +1,63 @@
+#centro-laboral .model-privacy {
+  padding: 12px 15px;
+  border-radius: 12px;
+  background: #f4f5f7;
+  font-size: 13px;
+}
+#centro-laboral .model-personalize {
+  margin: 22px 0;
+  padding: 16px;
+  border: 1px solid #dce0e5;
+  border-radius: 14px;
+}
+#centro-laboral .model-personalize summary {
+  font-weight: 750;
+  cursor: pointer;
+  color: #20232a;
+}
+#centro-laboral .model-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 18px;
+  margin-bottom: 18px;
+}
+#centro-laboral .model-field {
+  min-width: 0;
+}
+#centro-laboral .model-help {
+  display: block;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #565b67;
+  margin-top: 8px;
+}
+#centro-laboral .model-preview-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+#centro-laboral #model-output {
+  min-height: 410px;
+  line-height: 1.7;
+  background: #fafbfc !important;
+  color: #20232a !important;
+  border-color: #aab0b9 !important;
+}
+#centro-laboral #modelos-escritos {
+  scroll-margin-top: 90px;
+}
+@media (max-width: 600px) {
+  #centro-laboral .model-fields {
+    grid-template-columns: 1fr;
+  }
+  #centro-laboral .model-preview-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  #centro-laboral #model-output {
+    min-height: 460px;
+  }
+}

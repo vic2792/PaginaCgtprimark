@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Portal estático de CGT Primark Gran Vía, compatible con GitHub Pages.",
   "scripts": {
-    "test": "node tests/regression.cjs && node tests/estructura.cjs",
+    "test": "node tests/regression.cjs && node tests/estructura.cjs && node tests/modelos.cjs",
     "test:equivalencia": "node tests/equivalencia.cjs"
   },
   "devDependencies": {

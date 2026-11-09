@@ -21,6 +21,7 @@ const routes = {
   "auditoria-nomina-cgt": "nomina",
   "derechos-guia": "derechos",
   "centro-laboral": "centro",
+  "faq-renuncia-complementarias": "dudas",
   hero: "inicio",
   "portal-fuentes": "fuentes",
 };
@@ -72,6 +73,8 @@ export function goHome() {
 
 export function jumpTo(id) {
   navigate(routes[id] || "herramientas");
+  const target = document.getElementById(id);
+  if (target?.tagName === "DETAILS") target.open = true;
   setTimeout(
     () =>
       document.getElementById(id)?.scrollIntoView({

@@ -11,6 +11,7 @@ import { initTablas } from "./tablas.js";
 import { initNomina } from "./nomina.js";
 import { initConsultas } from "./consultas.js";
 import { initChat } from "./chat.js";
+import { initModelos } from "./modelos.js";
 import {
   initEscritos,
   makeLetter,
@@ -49,10 +50,11 @@ const actions = {
 };
 
 async function start() {
-  const [salarios, preguntas, herramientas] = await Promise.all([
+  const [salarios, preguntas, herramientas, escritos] = await Promise.all([
     loadData("salarios"),
     loadData("preguntas"),
     loadData("herramientas"),
+    loadData("escritos"),
   ]);
   initFormacion(preguntas);
   initCatalogo(herramientas);
@@ -63,6 +65,7 @@ async function start() {
   initChat();
   initEscritos();
   initCentroLaboral();
+  initModelos(escritos);
   initSanciones();
   initNavigation(renderTool);
 

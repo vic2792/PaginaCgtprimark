@@ -26,6 +26,7 @@ assets/
     tablas.js              Consulta de salarios, antigüedad, tarifas y permisos
     nomina.js              Comparación de la nómina con la referencia salarial
     escritos.js            Generadores de escritos, copia e impresión
+    modelos.js             Biblioteca de textos preparados y copias editables
     consultas.js           Búsqueda de los temas laborales y sus respuestas
     chat.js                Ventana de chat que reutiliza las mismas respuestas
     centro-laboral.js      Pestañas, jornada semanal, gestiones y cuestionario
@@ -36,6 +37,7 @@ assets/
     herramientas.json      Nombres, descripciones y categorías del catálogo
     preguntas.json         Temas, permisos y cuestionario que ya existían
     salarios.json          Tablas e importes que utilizan las calculadoras
+    escritos.json          Modelos preparados y sus campos editables
  docs/                     Auditoría, cambios y explicación de la estructura
  tests/                    Pruebas que se ejecutan con Node.js y Playwright
 ```
@@ -75,7 +77,7 @@ git show 2b75907885e7a466ab01e4cf976ffd2388b031a4:index.html > /tmp/cgt-before.h
 BASELINE_HTML=/tmp/cgt-before.html npm run test:equivalencia
 ```
 
-Esta prueba contrasta cálculos, escritos, apariencia y capturas con el archivo anterior. Tras publicar, se puede ejecutar la regresión contra la URL pública:
+Esta prueba contrasta cálculos, escritos, apariencia y capturas con el archivo anterior. Está pensada para comprobar la separación original; las funciones o vistas añadidas después producirán diferencias esperadas. Tras publicar, se puede ejecutar la regresión contra la URL pública:
 
 ```bash
 TEST_URL=https://vic2792.github.io/PaginaCgtprimark/ node tests/regression.cjs
@@ -92,3 +94,9 @@ TEST_URL=https://vic2792.github.io/PaginaCgtprimark/ node tests/regression.cjs
 - Cambiar el texto de un escrito: `assets/js/escritos.js`.
 
 La separación conserva los importes y contenidos anteriores; no supone una nueva revisión jurídica ni incorpora las 79 preguntas completas. Las advertencias de cada herramienta siguen vigentes. Los registros locales continúan usando las mismas claves de almacenamiento.
+
+## Añadir un modelo de escrito
+
+Los modelos preparados están en `data/escritos.json`. Cada entrada tiene un identificador único, título, descripción, indicaciones de uso, lista de campos y texto. Los marcadores `{{nombre}}`, `{{centro}}`, `{{ciudad}}` y `{{fecha}}` se sustituyen en la copia; `{{identificacion}}` añade el DNI solo si se rellena. Los campos de DNI, cuando se utilicen, deben declararse opcionales. No se guardan las copias en localStorage ni se envían a un servidor.
+
+El primer modelo es la renuncia breve facilitada por el usuario. Se ha omitido «obligatorias» para distinguir las horas del pacto de las horas de aceptación voluntaria; el generador detallado y las referencias jurídicas siguen disponibles. Antes de añadir otro modelo hay que revisar su redacción y los requisitos del trámite, sin presentar un texto genérico como garantía jurídica.

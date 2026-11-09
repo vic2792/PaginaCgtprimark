@@ -45,3 +45,13 @@ Se añaden los iconos de Instagram y TikTok a los seis enlaces existentes, inclu
 ## Separación de HTML, CSS, JavaScript y datos
 
 Se conserva la aplicación y se distribuye en `assets/css`, `assets/js`, `assets/img` y `data`. Se sustituye JavaScript incrustado por módulos nativos y acciones mediante atributos de datos, con un arranque explícito. El logotipo original deja de estar incrustado en Base64. Tablas y temas existentes se cargan desde JSON sin cambiar sus valores ni añadir respuestas jurídicas. Se documenta el proyecto en README.md y docs/ESTRUCTURA.md y se añaden pruebas de equivalencia, rutas, persistencia, impresión y errores de carga.
+
+## Biblioteca de modelos de escritos
+
+Se añade Centro laboral → Modelos, inicialmente con la renuncia breve al pacto de horas complementarias facilitada por el usuario. El texto conserva el destinatario People & Culture y la estructura aportada; se elimina la palabra «obligatorias» para no confundir el pacto con las ofertas voluntarias. Los modelos y campos viven en data/escritos.json y su interfaz en assets/js/modelos.js y assets/css/modelos.css.
+
+Permite ver el modelo en blanco, rellenar una copia, editar el resultado, copiarlo, descargar .txt, imprimir/guardar PDF y limpiar los datos. El DNI es opcional y se omite de la copia si no se rellena. No se almacenan datos del formulario ni se envían a terceros. La impresión reutiliza el mismo servicio que el generador existente y escapa el texto antes de mostrarlo.
+
+Se incorporan accesos desde el generador y desde la ficha de renuncia. Se conserva el generador detallado y se recuerda que el modelo breve exige comprobar los requisitos y el preaviso aplicables. No se han creado modelos no facilitados ni nuevas respuestas jurídicas.
+
+Pruebas: modelo en blanco y personalizado, DNI opcional, edición, copia y alternativa cuando falla el permiso, descarga, impresión con texto escapado, limpieza y ausencia de datos personales en solicitudes y almacenamiento, a 320/390/1280 px. Regresión de las 16 herramientas y la impresión existente.
