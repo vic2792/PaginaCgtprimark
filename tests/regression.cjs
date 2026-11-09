@@ -27,6 +27,11 @@ const path=require('node:path');
  await page.locator('#cgt-letter-name').fill('Prueba <texto>');await page.locator('#cgt-letter-make').click();assert.match(await page.locator('#cgt-letter-output').inputValue(),/Prueba <texto>/);
  await page.locator('#cgt-letter-type').selectOption('renuncia-complementarias');await page.locator('#cgt-letter-make').click();assert.match(await page.locator('#cgt-letter-output').inputValue(),/RENUNCIA AL PACTO/);
  await page.locator('[data-center="jornada"]').click();await page.locator('#cgt-week-calc').click();assert.match(await page.locator('#cgt-week-result').innerText(),/Horas planificadas/);
+ await page.evaluate(()=>document.querySelector('[data-portal="nomina"]').click());
+ assert.equal(await page.locator('.payroll-group').count(),3);
+ await page.locator('#auditHours').fill('30');await page.locator('#auditOther').fill('75');await page.locator('#auditCalc').click();
+ assert.match(await page.locator('#auditResult').innerText(),/Total bruto orientativo/);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'payroll overflow');
  await page.evaluate(()=>document.querySelector('[data-portal="dudas"]').click());
  for(const [query,expected] of [['Quiero dejar de hacer horas complementarias','Renuncia'],['Cómo quitar las horas complementarias','Renuncia'],['Renunciar al pacto de horas','Renuncia'],['No quiero hacer más horas complementarias','Renuncia'],['Me han despedido y tengo un hijo','Sanciones'],['salario y vacaciones','Necesitamos concretar'],['astronomía','Necesitamos concretar']]){
  await page.locator('#pregunta-staff').fill(query);await page.locator('#form-dudas').evaluate(e=>e.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true})));assert.match(await page.locator('#respuesta-staff h3').innerText(),new RegExp(expected),query);

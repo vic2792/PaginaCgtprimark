@@ -23,3 +23,7 @@
 `node tests/regression.cjs` requiere Playwright y Chromium. Puede indicarse la ruta con CHROMIUM_PATH. Usa un servidor temporal en localhost, no envía datos personales a servicios externos. Recorre las 16 herramientas en 320, 390 y 1280 px; comprueba regreso, permisos, cálculos válidos e inválidos, generación de escritos, jornada y consultas, y detecta errores pageerror.
 
 También se ha abierto la ventana de impresión y comprobado el texto generado. No equivale a revisar el PDF físico ni todas las configuraciones de impresora. El portapapeles real, lectores de pantalla, contraste sobre imágenes/degradados y vigencia jurídica completa requieren comprobaciones adicionales. No se han cambiado fórmulas salariales ni creado las 79 respuestas.
+
+## Diseño del revisor de nómina
+
+Se agrupan los 17 controles en tres bloques con fieldset/legend, etiquetas y unidades visibles, campos amplios, tipografía numérica y foco destacado. En móvil se muestra una columna; en escritorio, dos. Se conservan IDs, valores, opciones y fórmulas. Se comparó el mismo caso (30 horas, 75 € en otros conceptos y 1.500 € de bruto real) antes y después: resultados idénticos en 320, 390 y 1280 px.
