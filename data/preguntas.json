@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "nota": "Temas y textos existentes; no representa las 79 preguntas completas ni cambia su estado de revisión.",
+  "temas": [
+    {
+      "keys": ["hospital", "ingres", "operaci", "cirug", "enfermedad grave"],
+      "title": "Hospitalización o enfermedad grave de un familiar",
+      "body": "El artículo 37.3.b del Estatuto de los Trabajadores reconoce, con los requisitos legales, cinco días de permiso retribuido por accidente o enfermedad graves, hospitalización o intervención quirúrgica sin hospitalización que precise reposo domiciliario de determinados familiares y convivientes. El cómputo y la documentación deben revisarse según tu situación y el convenio aplicable.",
+      "next": "Comunica el hecho a la empresa y aporta el justificante pertinente; solicita por escrito confirmación de las fechas del permiso.",
+      "law": "Art. 37.3.b del Estatuto de los Trabajadores",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430"
+    },
+    {
+      "keys": [
+        "urgencia",
+        "urgente",
+        "fuerza mayor",
+        "imprevist",
+        "hijo enfermo",
+        "hija enferma",
+        "niño enfermo",
+        "niña enferma"
+      ],
+      "title": "Urgencia familiar o hijo enfermo",
+      "body": "Si una enfermedad o accidente de un familiar o conviviente exige tu presencia inmediata, puede corresponderte la ausencia por fuerza mayor familiar del artículo 37.9 del Estatuto de los Trabajadores. Las horas equivalentes a cuatro días al año son retribuidas en los términos legalmente previstos. No toda enfermedad ordinaria genera automáticamente un permiso retribuido; hay que valorar la urgencia y el motivo.",
+      "next": "Avisa a la empresa lo antes posible, conserva la justificación y explica por qué tu presencia inmediata es indispensable.",
+      "law": "Art. 37.9 del Estatuto de los Trabajadores",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430"
+    },
+    {
+      "keys": [
+        "horario",
+        "turno",
+        "cambio de planta",
+        "jornada",
+        "festiv",
+        "descanso"
+      ],
+      "title": "Horarios, turnos y distribución de jornada",
+      "body": "Las modificaciones de horarios, la distribución irregular de jornada y los descansos están sujetos al Estatuto de los Trabajadores y al convenio de Primark. Para determinar si el cambio es correcto hacen falta el horario publicado, la fecha de comunicación y las condiciones contractuales.",
+      "next": "Guarda una copia del horario original y del modificado, anota cuándo te avisaron y pide una explicación por escrito.",
+      "law": "Arts. 34 y 41 del Estatuto de los Trabajadores y convenio Primark",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430"
+    },
+    {
+      "keys": [
+        "nomina",
+        "nómina",
+        "sueldo",
+        "salario",
+        "cobro",
+        "paga",
+        "plus",
+        "cuatrien",
+        "antigüedad"
+      ],
+      "title": "Nómina, salario y complementos",
+      "body": "El salario depende de tu grupo profesional, porcentaje de jornada, antigüedad, pagas y complementos aplicables. La web incluye una calculadora orientativa basada en tablas del convenio, pero una diferencia no demuestra por sí sola un impago.",
+      "next": "Compara el bruto devengado, los conceptos y el periodo de nómina. Puedes usar la herramienta sin introducir DNI ni datos bancarios.",
+      "law": "Arts. 25, 27 y 28 del convenio modificado de Primark",
+      "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2025-26529",
+      "internal": "#auditoria-nomina-cgt"
+    },
+    {
+      "keys": ["vacacion", "vacaciones", "permuta"],
+      "title": "Vacaciones y cambios de fechas",
+      "body": "Las vacaciones se rigen por el artículo 38 del Estatuto de los Trabajadores y el convenio aplicable. Su disfrute se fija de común acuerdo conforme a las reglas de planificación; no debe suponerse que cualquier cambio solicitado queda automáticamente aprobado.",
+      "next": "Conserva la asignación comunicada, tu solicitud y las respuestas de RR. HH. Si existe desacuerdo, consulta cuanto antes los plazos de reclamación.",
+      "law": "Art. 38 del Estatuto de los Trabajadores y convenio Primark",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430"
+    },
+    {
+      "keys": [
+        "sanci",
+        "amonesta",
+        "despid",
+        "desped",
+        "expediente",
+        "suspension de empleo"
+      ],
+      "title": "Sanciones y medidas disciplinarias",
+      "body": "Ante una sanción o despido es esencial revisar la comunicación escrita, los hechos imputados, la fecha de notificación y el convenio. Los plazos de impugnación pueden ser breves y no conviene esperar.",
+      "next": "Conserva la carta y las pruebas. Solicita asesoramiento sindical o jurídico de inmediato; no compartas documentación personal en esta web.",
+      "law": "Arts. 54–60 del Estatuto de los Trabajadores y normativa procesal",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430"
+    },
+    {
+      "keys": [
+        "boda",
+        "matrimonio",
+        "pareja de hecho",
+        "mudanza",
+        "fallec",
+        "defunc",
+        "permiso"
+      ],
+      "title": "Permisos retribuidos",
+      "body": "Los permisos dependen del hecho causante y de los requisitos del Estatuto de los Trabajadores y del convenio. Hay diferencias entre días naturales, laborables y tiempo indispensable, por lo que es importante identificar el permiso concreto.",
+      "next": "Consulta el apartado de permisos del portal y solicita por escrito las fechas de disfrute y la documentación exigible.",
+      "law": "Art. 37.3 del Estatuto de los Trabajadores y convenio Primark",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+      "internal": "#catalog"
+    }
+  ],
+  "permisos": {
+    "hospital": [
+      "Hospitalización, accidente o enfermedad grave",
+      "El art. 37.3.b ET establece cinco días retribuidos en los supuestos contemplados para cónyuge, pareja de hecho, determinados familiares y convivientes que requieran cuidado efectivo. Acreditar el hecho causante y comprobar el inicio aplicable."
+    ],
+    "fallecimiento": [
+      "Fallecimiento",
+      "El art. 37.3.b bis ET establece dos días por fallecimiento de cónyuge, pareja de hecho o parientes hasta segundo grado; se amplía en dos días si es necesario desplazamiento."
+    ],
+    "mudanza": [
+      "Traslado del domicilio habitual",
+      "El art. 37.3.c ET contempla un día retribuido."
+    ],
+    "matrimonio": [
+      "Matrimonio o registro de pareja de hecho",
+      "El art. 37.3.a ET contempla quince días naturales."
+    ],
+    "urgencia": [
+      "Fuerza mayor familiar urgente",
+      "El art. 37.9 ET regula ausencias por motivos familiares urgentes relacionados con familiares o convivientes, retribuidas hasta el equivalente a cuatro días al año en los términos previstos. No confundir con el permiso de cinco días por hospitalización."
+    ],
+    "otro": [
+      "Otros permisos",
+      "Consulta el artículo 37 ET, el convenio y las circunstancias particulares del supuesto."
+    ]
+  },
+  "permisosCartel": [
+    [
+      "Matrimonio o pareja de hecho",
+      "17 días naturales",
+      "Según cartel CGT; verificar requisitos de pareja de hecho."
+    ],
+    [
+      "Fallecimiento de familiar",
+      "3 días; +2 con desplazamiento",
+      "Verificar parentesco y desplazamiento; mejora respecto del mínimo general del ET."
+    ],
+    [
+      "Accidente, enfermedad grave, hospitalización o intervención con reposo",
+      "5 días laborables",
+      "Hasta segundo grado según cartel; revisar también convivientes contemplados en el ET."
+    ],
+    ["Mudanza de domicilio habitual", "2 días", "Según cartel CGT."],
+    [
+      "Deber público (votar, jurado, etc.)",
+      "Tiempo indispensable",
+      "Cuando coincida con la jornada."
+    ],
+    [
+      "Exámenes prenatales, adopción o acogimiento",
+      "Tiempo indispensable",
+      "En los supuestos y condiciones legales."
+    ],
+    [
+      "Fuerza mayor familiar",
+      "Hasta 4 días al año",
+      "Por horas o jornadas; situaciones familiares urgentes."
+    ],
+    [
+      "Boda de pariente hasta segundo grado",
+      "1 día",
+      "Consanguinidad o afinidad según cartel."
+    ],
+    [
+      "Acompañar familiar de primer grado a consulta",
+      "Tiempo necesario",
+      "Con justificación previa según cartel."
+    ],
+    [
+      "Consulta médica propia",
+      "Tiempo necesario",
+      "Según cartel; verificar condiciones."
+    ],
+    [
+      "Acompañar a pareja a preparación al parto",
+      "20 horas al año",
+      "Según cartel CGT."
+    ],
+    [
+      "Donación de órganos o tejidos (actos preparatorios)",
+      "Tiempo indispensable",
+      "Dentro de la jornada, según requisitos legales."
+    ],
+    [
+      "Nacimiento y cuidado de menor",
+      "19 semanas por progenitor; 32 en familia monoparental",
+      "El cartel indica 6 semanas obligatorias tras el parto; comprobar distribución y régimen transitorio."
+    ],
+    [
+      "Cuidado del lactante",
+      "1 hora diaria",
+      "Hasta los 9 meses, con modalidades legales."
+    ],
+    [
+      "Fenómenos meteorológicos o catástrofes",
+      "Hasta 4 días",
+      "Cuando concurra imposibilidad de acceder al trabajo conforme a la norma."
+    ]
+  ],
+  "cuestionario": [
+    [
+      "¿Cuál es el descanso general mínimo entre jornadas?",
+      ["8 horas", "12 horas", "24 horas"],
+      1,
+      "Art. 34.3 ET."
+    ],
+    [
+      "¿Qué artículo regula la adaptación de jornada por conciliación?",
+      ["34.8 ET", "15 ET", "59 ET"],
+      0,
+      "Art. 34.8 ET."
+    ],
+    [
+      "¿El permiso de cinco días por hospitalización equivale al de fuerza mayor familiar urgente?",
+      ["Sí", "No"],
+      1,
+      "Son supuestos distintos: arts. 37.3.b y 37.9 ET."
+    ],
+    [
+      "¿Se puede reclamar una diferencia salarial?",
+      ["Sí, con los plazos aplicables", "Nunca"],
+      0,
+      "El art. 59 ET contempla plazos de prescripción."
+    ],
+    [
+      "¿Un generador de escritos sustituye la revisión jurídica?",
+      ["Sí", "No"],
+      1,
+      "Es una herramienta de apoyo, no asesoramiento jurídico individual."
+    ]
+  ]
+}

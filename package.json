@@ -1,0 +1,14 @@
+{
+  "name": "cgt-primark-gran-via",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portal estático de CGT Primark Gran Vía, compatible con GitHub Pages.",
+  "scripts": {
+    "test": "node tests/regression.cjs && node tests/estructura.cjs",
+    "test:equivalencia": "node tests/equivalencia.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

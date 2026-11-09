@@ -1,0 +1,134 @@
+{
+  "herramientas": [
+    [
+      "huelga",
+      "✊",
+      "Calculadora de huelga",
+      "Estima el descuento bruto de una jornada de huelga.",
+      "Calculadoras"
+    ],
+    [
+      "nomina",
+      "€",
+      "Calculadora de nóminas",
+      "Estima tu salario y compara conceptos.",
+      "Calculadoras"
+    ],
+    [
+      "horas",
+      "⏱",
+      "Horas anuales",
+      "Controla las horas planificadas y las pendientes.",
+      "Calculadoras"
+    ],
+    [
+      "vacaciones",
+      "🏖",
+      "Vacaciones",
+      "Calcula días orientativos y registra los disfrutados.",
+      "Calculadoras"
+    ],
+    [
+      "permisos",
+      "📋",
+      "Permisos retribuidos",
+      "Encuentra requisitos y prepara tu solicitud.",
+      "Derechos"
+    ],
+    [
+      "horarios",
+      "📅",
+      "Revisor de horarios",
+      "Comprueba descansos y horas entre turnos.",
+      "Calculadoras"
+    ],
+    [
+      "festivos",
+      "☀",
+      "Domingos y festivos",
+      "Calcula complementos con importes verificados.",
+      "Calculadoras"
+    ],
+    [
+      "escritos",
+      "✍",
+      "Generador de escritos",
+      "Crea solicitudes para Recursos Humanos.",
+      "Gestiones"
+    ],
+    [
+      "incidencias",
+      "📣",
+      "Registro de incidencias",
+      "Documenta un problema sin enviarlo a terceros.",
+      "Gestiones"
+    ],
+    [
+      "derechos",
+      "⚖",
+      "Biblioteca de derechos",
+      "Respuestas a preguntas laborales frecuentes.",
+      "Derechos"
+    ],
+    [
+      "calendario",
+      "🗓",
+      "Calendario laboral",
+      "Organiza tus fechas y consulta fuentes oficiales.",
+      "Gestiones"
+    ],
+    [
+      "antiguedad",
+      "⌛",
+      "Antigüedad",
+      "Calcula el tiempo desde tu contratación.",
+      "Calculadoras"
+    ],
+    [
+      "contratos",
+      "🤝",
+      "Comparador de contratos",
+      "Compara jornadas y proporciones de salario.",
+      "Calculadoras"
+    ],
+    [
+      "test",
+      "🎯",
+      "Test de derechos",
+      "Aprende con preguntas y explicaciones.",
+      "Derechos"
+    ],
+    [
+      "finiquito",
+      "🧾",
+      "Calculadora de finiquito",
+      "Prepara una estimación de conceptos pendientes.",
+      "Calculadoras"
+    ],
+    [
+      "novedades",
+      "📰",
+      "Novedades CGT",
+      "Comunicados y enlaces sindicales.",
+      "Información"
+    ]
+  ],
+  "areas": {
+    "huelga": "Salario y cálculos",
+    "nomina": "Salario y cálculos",
+    "festivos": "Salario y cálculos",
+    "antiguedad": "Salario y cálculos",
+    "contratos": "Salario y cálculos",
+    "finiquito": "Salario y cálculos",
+    "horas": "Jornada y horarios",
+    "vacaciones": "Jornada y horarios",
+    "horarios": "Jornada y horarios",
+    "calendario": "Jornada y horarios",
+    "permisos": "Derechos y permisos",
+    "derechos": "Derechos y permisos",
+    "test": "Derechos y permisos",
+    "escritos": "Gestiones CGT",
+    "incidencias": "Gestiones CGT",
+    "novedades": "Información sindical"
+  }
+}
