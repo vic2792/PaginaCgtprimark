@@ -37,3 +37,7 @@ Fuentes contrastadas: Estatuto consolidado, artículo 12.5.e (renuncia), f (incu
 Correcciones conexas: se sustituye la referencia errónea a 12.5.g para renuncia por 12.5.e; se retira la afirmación de un preaviso convencional de un mes, no acreditada en los textos contrastados; el borrador de vía convencional exige comprobar su aplicación antes de presentarlo. No se calcula una fecha efectiva automática ni se valida el pacto individual.
 
 Pruebas añadidas: pregunta rápida, contenido legal y fuentes en la respuesta, acceso al formulario con renuncia seleccionada, borrador legal y convencional, respuesta equivalente en chat, junto con regresión en 320/390/1280 px.
+
+## Iconos de redes sociales
+
+Se añaden los iconos de Instagram y TikTok a los seis enlaces existentes, incluidos pie de página, actualidad y fuentes. Se conservan las cuentas y los textos accesibles; los SVG son decorativos y no duplican la lectura del enlace. Los iconos están incrustados, por lo que no cargan recursos ni rastreadores de redes sociales. Geometrías: Simple Icons, https://github.com/simple-icons/simple-icons (CC0); los logotipos siguen sujetos a los derechos de sus marcas.
