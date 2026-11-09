@@ -41,3 +41,7 @@ Pruebas añadidas: pregunta rápida, contenido legal y fuentes en la respuesta, 
 ## Iconos de redes sociales
 
 Se añaden los iconos de Instagram y TikTok a los seis enlaces existentes, incluidos pie de página, actualidad y fuentes. Se conservan las cuentas y los textos accesibles; los SVG son decorativos y no duplican la lectura del enlace. Los iconos están incrustados, por lo que no cargan recursos ni rastreadores de redes sociales. Geometrías: Simple Icons, https://github.com/simple-icons/simple-icons (CC0); los logotipos siguen sujetos a los derechos de sus marcas.
+
+## Separación de HTML, CSS, JavaScript y datos
+
+Se conserva la aplicación y se distribuye en `assets/css`, `assets/js`, `assets/img` y `data`. Se sustituye JavaScript incrustado por módulos nativos y acciones mediante atributos de datos, con un arranque explícito. El logotipo original deja de estar incrustado en Base64. Tablas y temas existentes se cargan desde JSON sin cambiar sus valores ni añadir respuestas jurídicas. Se documenta el proyecto en README.md y docs/ESTRUCTURA.md y se añaden pruebas de equivalencia, rutas, persistencia, impresión y errores de carga.

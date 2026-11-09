@@ -1,0 +1,9 @@
+/* Documento independiente que abre el generador de escritos. */
+body {
+  font: 16px/1.6 Arial;
+  padding: 35px;
+}
+pre {
+  white-space: pre-wrap;
+  font: inherit;
+}
