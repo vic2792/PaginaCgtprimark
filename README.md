@@ -20,3 +20,5 @@ La información es orientativa. Consulta las fuentes y contacta con la sección 
 Este proyecto tiene una **licencia de software propietario**. Su titular es Victor Llantoy Caceres (victor-llantoy) y está destinado a los fines de la sección sindical CGT Primark Gran Vía, en Madrid.
 
 Puedes consultar el código con fines personales, educativos o de referencia. Para modificarlo, distribuirlo o darle un uso comercial necesitas autorización previa por escrito del titular. Consulta las condiciones completas en [LICENSE](LICENSE).
+
+Si quieres usar el proyecto o solicitar autorización, escribe a **[vic2792@gmail.com](mailto:vic2792@gmail.com)**.
