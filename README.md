@@ -1,106 +1,22 @@
 # CGT Primark Gran Vía
 
-Portal estático de la sección sindical de Primark Gran Vía, Madrid.
+Un portal de la sección sindical CGT Primark Gran Vía, en Madrid, creado para ayudar a las compañeras y compañeros a consultar información y realizar gestiones laborales.
 
-Web: https://vic2792.github.io/PaginaCgtprimark/
+## ¿Qué encontrarás?
 
-## Cómo se organiza
+- Información sobre temas laborales, permisos y condiciones de trabajo.
+- Calculadoras y tablas de consulta, incluidas referencias salariales.
+- Modelos y generadores de escritos.
+- Un calendario y otras herramientas prácticas.
 
-```text
-index.html                 Estructura y contenido de las secciones
-assets/
-  css/
-    base.css               Estilos generales heredados
-    componentes.css        Paneles, formularios, navegación y ajustes visuales
-    impresion.css          Aspecto del documento que abre el generador
-  img/
-    logo-cgt-primark.jpg    Logotipo original, sin modificar
-  js/
-    main.js                Arranque y conexión de los módulos
-    datos.js               Carga de los archivos JSON
-    navegacion.js          Menú, cambios de sección y accesos internos
-    catalogo.js            Lista, búsqueda y apertura de las 16 herramientas
-    plantillas.js          HTML que necesitan las herramientas al abrirse
-    ui.js                  Funciones pequeñas compartidas por los formularios
-    calculadoras.js        Operaciones y validación de datos numéricos
-    tablas.js              Consulta de salarios, antigüedad, tarifas y permisos
-    nomina.js              Comparación de la nómina con la referencia salarial
-    escritos.js            Generadores de escritos, copia e impresión
-    modelos.js             Modelos con huecos en las respuestas y el chat
-    consultas.js           Búsqueda de los temas laborales y sus respuestas
-    chat.js                Ventana de chat que reutiliza las mismas respuestas
-    centro-laboral.js      Pestañas, jornada semanal, gestiones y cuestionario
-    calendario.js          Notas del calendario guardadas en este navegador
-    formacion.js           Consulta de permisos y test del catálogo
-    sanciones.js           Orientación disciplinaria y acceso al escrito
- data/
-    herramientas.json      Nombres, descripciones y categorías del catálogo
-    preguntas.json         Temas, permisos y cuestionario que ya existían
-    salarios.json          Tablas e importes que utilizan las calculadoras
-    escritos.json          Modelos preparados y sus campos editables
- docs/                     Auditoría, cambios y explicación de la estructura
- tests/                    Pruebas que se ejecutan con Node.js y Playwright
-```
+La información es orientativa. Consulta las fuentes y contacta con la sección sindical si tienes dudas sobre tu situación.
 
-HTML define los elementos, CSS su aspecto y JavaScript su comportamiento. JSON guarda datos: no ejecuta operaciones. Los módulos JavaScript usan `import` y `export` para compartir funciones, sin añadirlas a `window`. El navegador carga `main.js`, que espera los datos y prepara los demás módulos.
+## Visita la web
 
-Los botones usan atributos como `data-action="calcHoras"`. Son nombres que JavaScript reconoce, no instrucciones ejecutables dentro del HTML. Los pequeños fragmentos de HTML de `plantillas.js` se necesitan para crear los formularios al abrir una herramienta.
+[Entrar en CGT Primark Gran Vía](https://victor-llantoy.github.io/PaginaCgtprimark/)
 
-## Verla en tu ordenador
+## Licencia
 
-Desde la carpeta del repositorio, con Python instalado:
+Este proyecto tiene una **licencia de software propietario**. Su titular es Victor Llantoy Caceres (victor-llantoy) y está destinado a los fines de la sección sindical CGT Primark Gran Vía, en Madrid.
 
-```bash
-python -m http.server 8000
-```
-
-Abrir http://localhost:8000/ en el navegador. Los módulos y JSON necesitan servirse por HTTP; no se debe abrir `index.html` con doble clic. No hace falta instalar Node.js para servir la web con Python.
-
-GitHub Pages publica estos archivos directamente desde `main`. Las rutas son relativas y también funcionan dentro de `/PaginaCgtprimark/`. No hay compilación, backend ni dependencias de producción.
-
-## Ejecutar las pruebas
-
-Para desarrollar y probar con Node.js 20 o posterior:
-
-```bash
-npm ci
-npx playwright install chromium
-npm test
-```
-
-Si se usa un Chromium ya instalado, indicar su ruta mediante `CHROMIUM_PATH`. Las pruebas utilizan un servidor temporal bajo `/PaginaCgtprimark/`, recorren las herramientas a 320/390/1280 px y comprueban también carga de archivos, calendario, errores de datos e impresión. El PDF de comprobación se escribe en la carpeta temporal del sistema.
-
-Para comparar con la versión anterior a la separación:
-
-```bash
-git show 2b75907885e7a466ab01e4cf976ffd2388b031a4:index.html > /tmp/cgt-before.html
-BASELINE_HTML=/tmp/cgt-before.html npm run test:equivalencia
-```
-
-Esta prueba contrasta cálculos, escritos, apariencia y capturas con el archivo anterior. Está pensada para comprobar la separación original; las funciones o vistas añadidas después producirán diferencias esperadas. Tras publicar, se puede ejecutar la regresión contra la URL pública:
-
-```bash
-TEST_URL=https://vic2792.github.io/PaginaCgtprimark/ node tests/regression.cjs
-```
-
-## Dónde hacer cada cambio
-
-- Cambiar colores, tamaños o campos: `assets/css/`.
-- Cambiar una fórmula: `assets/js/calculadoras.js` o `nomina.js`, y comprobar sus resultados.
-- Actualizar importes: `data/salarios.json`, conservando su fuente y periodo.
-- Actualizar temas de consulta: `data/preguntas.json`. No añadir respuestas sin revisar sus fuentes.
-- Cambiar el contenido extenso de una sección o de la ficha de renuncia: `index.html`.
-- Cambiar un formulario que aparece al abrir una herramienta: `assets/js/plantillas.js`.
-- Cambiar el texto de un escrito: `assets/js/escritos.js`.
-
-La separación conserva los importes y contenidos anteriores; no supone una nueva revisión jurídica ni incorpora las 79 preguntas completas. Las advertencias de cada herramienta siguen vigentes. Los registros locales continúan usando las mismas claves de almacenamiento.
-
-## Añadir un modelo de escrito
-
-Los modelos preparados están en `data/escritos.json`. Cada entrada tiene un identificador único, título, texto con huecos como `[Nombre y apellidos]` o `[fecha]`, documentación orientativa y notas de uso. No hay campos personales ni sustitución automática de nombre, DNI o fechas. La persona completa la copia fuera de la web o a mano tras imprimir.
-
-Para asociar un texto a una respuesta de `data/preguntas.json`, se añade `"modelos": ["identificador-del-modelo"]` al tema. Opcionalmente, `"documentacion": ["...", "..."]` añade una lista de documentos a preparar. Las fichas HTML extensas pueden incluir `<div data-model-slot="identificador-del-modelo"></div>`. El buscador y el chat reutilizan los mismos bloques y sus botones para copiar, descargar e imprimir.
-
-El primer modelo es la renuncia breve facilitada por el usuario, integrada en su ficha, su respuesta y el chat. Se ha omitido «obligatorias» para distinguir las horas del pacto de las horas de aceptación voluntaria. Se conserva el generador detallado anterior como herramienta independiente; el formulario de personalización de la nueva biblioteca se ha retirado.
-
-No se ha añadido una IA generativa: se muestran los textos preparados que existen en el repositorio. Los modelos de hospitalización, fallecimiento o matrimonio se incorporarán cuando se aporten y revisen sus textos, sin inventar respuestas ni asociar una plantilla incorrecta.
+Puedes consultar el código con fines personales, educativos o de referencia. Para modificarlo, distribuirlo o darle un uso comercial necesitas autorización previa por escrito del titular. Consulta las condiciones completas en [LICENSE](LICENSE).
